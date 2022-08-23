@@ -21,6 +21,9 @@ namespace FirstCrud.Controllers {
         public IActionResult Index2() {
             return View();
         }
+        public IActionResult Index3() {
+            return View();
+        }
         public IActionResult Privacy() {
             return View();
         }
