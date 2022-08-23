@@ -1,7 +1,7 @@
 ﻿using FirstCrud.Models;
 
 namespace FirstCrud.Repository {
-    public class Repository 
+    public static class Repository 
     {
         private static List<Employee> allEmployees = new List<Employee>();
 
