@@ -5,7 +5,7 @@ namespace FirstCrud.Repositories {
     {
         private static List<Employee> allEmployees = new List<Employee>();
 
-        private static IEnumerable<Employee> AllEmlpoyees 
+        public static IEnumerable<Employee> AllEmlpoyees 
         {
             get { return allEmployees; }
         }

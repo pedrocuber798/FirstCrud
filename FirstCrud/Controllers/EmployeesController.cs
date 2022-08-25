@@ -7,7 +7,7 @@ namespace FirstCrud.Controllers {
         {
         public IActionResult Index() 
             {
-            return View();
+            return View(EmployeeRepository.AllEmlpoyees);
         }
 
         public IActionResult Create() 
