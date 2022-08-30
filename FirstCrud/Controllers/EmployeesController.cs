@@ -1,13 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using FirstCrud.Models;
+
 using FirstCrud.Repositories;
+using FirstCrud.Models;
 
 namespace FirstCrud.Controllers {
     public class EmployeesController : Controller 
         {
         public IActionResult Index() 
             {
-            return View(EmployeeRepository.AllEmplpoyees);
+            return View(EmployeeRepository.AllEmployees);
         }
 
         public IActionResult Create() 
@@ -22,19 +23,26 @@ namespace FirstCrud.Controllers {
         }
         [HttpGet]
         public IActionResult Update(string empname) {
-            Employee employee = EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault();
+            Employee employee = EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault();
             return View(employee);
         }
         [HttpPost]
         public IActionResult Update(Employee employee, string empname) {
-            EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault().Age = employee.Age;
-            EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault().Salary = employee.Salary;
-            EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault().Department = employee.Department;
-            EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault().Sex = employee.Sex;
-            EmployeeRepository.AllEmplpoyees.Where(e => e.Name == empname).FirstOrDefault().Name = employee.Name;
+            EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault().Age = employee.Age;
+            EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault().Salary = employee.Salary;
+            EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault().Department = employee.Department;
+            EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault().Sex = employee.Sex;
+            EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault().Name = employee.Name;
 
             return RedirectToAction("Index");
         }
 
-    }
+        [HttpPost]
+        public IActionResult Delete(string empname) {
+            Employee employee = EmployeeRepository.AllEmployees.Where(e => e.Name == empname).FirstOrDefault();
+            EmployeeRepository.Delete(employee);
+            return RedirectToAction("Index");
+        }
+
+}
 }
