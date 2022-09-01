@@ -6,9 +6,15 @@ using FirstCrud.Models;
 namespace FirstCrud.Controllers {
     public class EmployeesController : Controller 
         {
-        public IActionResult Index() 
-            {
-            return View(EmployeeRepository.AllEmployees);
+        public IActionResult Index(string searchString) {
+            var employees = from m in EmployeeRepository.AllEmployees
+                            select m;
+
+            if (!String.IsNullOrEmpty(searchString)) {
+                employees = employees.Where(s => s.Name!.Contains(searchString));
+            }
+
+            return View(employees);
         }
 
         public IActionResult Create() 

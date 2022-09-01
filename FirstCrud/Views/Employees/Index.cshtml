@@ -3,6 +3,13 @@
 	ViewData["Title"] = "Index";
 }
 <a asp-action="Create">Create an Employees</a>
+
+<form asp-controller="Employees" asp-action="Index">
+	<p>
+    	Title: <input type="text" name="SearchString" />
+    	<input type="submit" value="Filter" />
+	</p>
+</form>
  
 <h2>Here is the list of Employees</h2>
 <table style="width:50%">
