@@ -43,6 +43,7 @@
     </dl>
 </div>
 <div>
+        <a asp-action="Update" asp-route-empname="@Model.Name">Update</a>
     @Html.ActionLink("Update", "Update", new {  id = Model.Name }) |
     <a asp-action="Index">Back to List</a>
 </div>
